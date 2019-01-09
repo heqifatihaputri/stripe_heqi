@@ -1,10 +1,7 @@
 class ChargesController < ApplicationController
   Stripe.api_key = Rails.application.secrets.stripe_secret_key
   before_action :authenticate_user!
-  before_action :find_product
-
-  def new
-  end
+  before_action :find_product, only: [:create]
 
   def create
     # @charge = Charge.new
@@ -27,6 +24,6 @@ class ChargesController < ApplicationController
   private
   
   def find_product
-    @product = Product.find(params[:product_id])
+    @product = Product.find(params[:id])
   end
 end

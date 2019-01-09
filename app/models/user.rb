@@ -13,8 +13,7 @@ class User < ActiveRecord::Base
 
   def assign_customer_id
     customer = Stripe::Customer.create(email: email)
-    self.customer_id = customer.id
-    user = User.last
-    customer_id = user.update(customer_id: self.customer_id)
+    customer_id = customer.id
+    self.update(customer_id: customer_id)
   end
 end

@@ -1,9 +1,0 @@
-<%= form_for :charge, url: charges_path do |f| %>
-  <%= hidden_field_tag :product_id, product.id %>
- 
-  <% if flash[:error].present? %>
-    <p><%= flash[:error] %></p>
-  <% end %>
-  
-  <%= f.submit "Pay with registered credit card", data: { 'disable-with' => 'Please wait ...' } %>
-<% end %>

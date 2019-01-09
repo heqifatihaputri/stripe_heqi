@@ -27,9 +27,15 @@
           <td><%= product.name %></td>
           <td><%= product.price %></td>
           <td><%= link_to image_tag(product.image.url(:thumb), class: 'media-object'), product.image.url(:thumb), target: '_blank' %></td>
-          <td><%= link_to 'Show', product %></td>
-          <td><%= link_to 'Edit', edit_product_path(product) %></td>
-          <td><%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <td align="center">
+              <%= link_to 'Show', product %>
+              <% if user_signed_in? %>
+                <% if product.user == current_user %>
+                  <%= link_to 'Edit', edit_product_path(product) %>
+                  <%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' } %>
+                <% end %>
+              <% end %>
+          </td>
         </tr>
       <% end %>
     </tbody>

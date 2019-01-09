@@ -17,13 +17,18 @@
 	</p>
 	<br>
 	 
-	<% if current_user.credit_cards.reject{ |card| card.new_record? }.any? %>
-	  <%= render 'shared/charge_form', product: @product %>
-	<% else %>
-		<%= link_to "Create Credit Card", new_credit_card_path %>
+	<% if user_signed_in? %>
+		<% if current_user.credit_cards.reject{ |card| card.new_record? }.any? %>
+		  <%= button_to "Pay", charges_create_path(id: @product.id), method: :put, data: { 'disable-with' => 'Please wait ...' } %>
+		<% else %>
+			<%= link_to "Create Credit Card", new_credit_card_path %>
+		<% end %>
+		
+		<br>
+		<% if @product.user == current_user %>
+			<%= link_to 'Edit', edit_product_path(@product) %>
+		<% end %>
 	<% end %>
-
 	<br>
-	<%= link_to 'Edit', edit_product_path(@product) %> |
 	<%= link_to 'Back', products_path %>
 </div>

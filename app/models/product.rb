@@ -1,6 +1,6 @@
 class Product < ActiveRecord::Base
 	validates :name,  presence: true, uniqueness: true
-  validates :price, presence: true, numericality: { greater_than: 0 }
+  validates :price, presence: true, numericality: { greater_than: 0, less_than: 999999 }
   belongs_to :user
   # has_many :uploads
   has_attached_file :image, :styles => { :medium => "100x100>",:thumb => "100x100>" }

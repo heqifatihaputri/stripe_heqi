@@ -13,8 +13,9 @@ Rails.application.routes.draw do
   end
   root 'products#index'
   resources :charges, only: [:new, :create]
-  resources :credit_card
   resources :uploads, only: [:new, :create]
+
+  put 'charges/create' => 'charges#create'
   # mount StripeEvent::Engine, at: '/payments'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
