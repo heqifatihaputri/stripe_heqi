@@ -36,8 +36,12 @@
 
 <br>
 
-<%= link_to 'New Product', new_product_path %>
-<br>
 <% if user_signed_in? %>
-  <%= link_to 'Credit Card', credit_cards_path %>
+  <div data-turbolinks="false">
+    <%= link_to 'New Product', new_product_path %>
+  </div>
+  <br>
+  <div>
+    <%= link_to 'Credit Card', credit_cards_path %>
+  </div>
 <% end %>
