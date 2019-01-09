@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+
+  root 'products#index'
+  
   get 'uploads/new'
 
   get 'uploads/create'
@@ -7,12 +10,8 @@ Rails.application.routes.draw do
   devise_for :users, controllers: {
     registrations: 'users/registrations'
   }
+  
   resources :products
-  resources :products do
-   resources :charges
-  end
-  root 'products#index'
-  resources :charges, only: [:new, :create]
   resources :uploads, only: [:new, :create]
 
   put 'charges/create' => 'charges#create'
