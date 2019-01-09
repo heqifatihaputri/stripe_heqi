@@ -1,27 +1,29 @@
-<!-- <p id="notice"><%= notice %></p> -->
+<div class="wrapper">
+	<!-- <p id="notice"><%= notice %></p> -->
 
-<p>
-  <strong>Name:</strong>
-  <%= @product.name %>
-</p>
+	<p>
+	  <strong>Name:</strong>
+	  <%= @product.name %>
+	</p>
 
-<p>
-  <strong>Price:</strong>
-  <%= @product.price %>
-</p>
+	<p>
+	  <strong>Price:</strong>
+	  <%= @product.price %>
+	</p>
 
-<p>
-	<strong>Price:</strong>
-	<%= image_tag @product.image.url(:thumb) %>
-</p>
-<br>
- 
-<% if current_user.credit_cards.reject{ |card| card.new_record? }.any? %>
-  <%= render 'shared/charge_form', product: @product %>
-<% else %>
-	<%= link_to "Create Credit Card", new_credit_card_path %>
-<% end %>
+	<p>
+		<strong>Price:</strong>
+		<%= image_tag @product.image.url(:thumb) %>
+	</p>
+	<br>
+	 
+	<% if current_user.credit_cards.reject{ |card| card.new_record? }.any? %>
+	  <%= render 'shared/charge_form', product: @product %>
+	<% else %>
+		<%= link_to "Create Credit Card", new_credit_card_path %>
+	<% end %>
 
-<br>
-<%= link_to 'Edit', edit_product_path(@product) %> |
-<%= link_to 'Back', products_path %>
+	<br>
+	<%= link_to 'Edit', edit_product_path(@product) %> |
+	<%= link_to 'Back', products_path %>
+</div>
